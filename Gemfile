@@ -4,7 +4,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'rails', '4.2.1'
-gem 'pg'
+gem 'pg', '0.18.2'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -30,5 +30,10 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   gem 'spring'
+
 end
 
+group :production do
+  gem 'pg',             '0.18.2'
+  gem 'rails_12factor', '0.0.3'
+end
