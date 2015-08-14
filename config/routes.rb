@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  root 'staticpages#index'
 
-  # You can have the root of your site routed with "root"
-  root 'profile#index'
+  resource :profile
 
+  get '/image/:email_hash', to: 'profiles#send_image', param: :email_hash
+
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
