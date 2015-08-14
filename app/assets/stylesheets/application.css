@@ -65,7 +65,9 @@ body {
 .profile_image {
 	max-width: 100%;
 	border-radius: 5px;
+	min-height: 250px;
 	@include box-shadow;
+
 }
 
 
