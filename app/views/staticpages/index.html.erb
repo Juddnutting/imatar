@@ -1,2 +1,20 @@
 <h1> Welcome to Imatar</h1>
 <p> You can upload your photo to be accessable anywhere online. Sign up now!</p>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_tag profiles_path, method: 'get' do |f| %>
+			<div class="form-group">
+				<%= email_field_tag :search, class: "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.submit "Search for email", :name => nil, class: "btn btn-primary"  %>
+			</div>
+		<% end %>
+
+		<h3> You found <%= @user.email %> </h3>	
+			
+	</div>
+
+</div>

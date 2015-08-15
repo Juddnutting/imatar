@@ -1,8 +1,26 @@
-<h1> This is the index page </h1>
 
-<p> 
-	<% @users.each do |user| %>
-	<%= user.profile.name  %>
-	<% end %>
-</p>
-	
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+	<h1> Welcome to Imatar</h1>
+	<p> You can upload your photo to be accessable anywhere online. Sign up now!</p> <br/>
+
+		<%= form_tag root_path, method: 'get' do |f| %>
+			<div class="form-group">
+				<%= email_field_tag :search, "", class: "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= submit_tag "Search for user via email", :name => nil, class: "btn btn-primary"  %>
+			</div>
+		<% end %>
+
+		<% if @user %>
+			<h3> <%= @user.email %> </h3>	
+	</div>
+
+</div>
+<% if @user.instance_of?(User) %>
+			<%= render '/profiles/show' %>
+			<% end %>
+
+		<% end %>

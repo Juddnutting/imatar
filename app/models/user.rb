@@ -6,5 +6,10 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
-  
+  def self.search(search)
+  	if search
+  		find_by(email: search.strip.downcase) || NoRecord.new
+  	end
+  end
+
 end

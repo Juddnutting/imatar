@@ -3,9 +3,7 @@ class ProfilesController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show, :send_image]
 
 	def index
-		@profiles = Profile.all
-		@users = User.all
-
+		@user = User.search(params[:search])
 	end
 
 	def new
@@ -28,6 +26,10 @@ class ProfilesController < ApplicationController
 	def send_image
 		@profile = Profile.find_by(email_hash: params[:email_hash])
 		render :layout => false
+	end
+
+	def search
+		@user = User.find_by(email: params[:email].strip.downcase)
 	end
 
 	private
