@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :profile
+  validates :name, presence: true, length: {minimum: 3, maximum: 50}
 
   def self.search(search)
   	if search
