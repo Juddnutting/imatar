@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'devise'
 gem 'paperclip'
+gem 'puma'
 gem 'bootstrap-sass'
 gem 'rails', '4.2.1'
 gem 'pg', '0.18.2'
