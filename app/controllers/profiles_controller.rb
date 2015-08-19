@@ -11,6 +11,11 @@ class ProfilesController < ApplicationController
 	end
 
 	def create
+		# if params[:image].nil?
+		# 	flash[:danger] = "Please upload an image"
+		# 	redirect_to 'new'
+		# end
+
 		@profile = current_user.build_profile(profile_params)
 		if @profile.save
 			redirect_to @profile
@@ -21,6 +26,18 @@ class ProfilesController < ApplicationController
 
 	def show
 		@profile = current_user.profile
+		@profile ||= current_user.build_profile
+
+	end
+
+	def update
+		@profile = current_user.profile.update(profile_params)
+		if @profile.save
+			redirect_to @profile
+		else
+			flash[:danger] = "update not sucessful"
+			redirect_to @profile
+		end
 	end
 
 	def send_image

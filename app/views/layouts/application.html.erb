@@ -26,7 +26,7 @@
 					<% if user_signed_in? -%>
 						<% if current_user.profile.nil? %>
 							<li> <%= link_to "Create Profile", new_profile_path %></li>
-						<% else %>
+						<% elsif current_user.profile.image.exists? %>
 							<li><%= link_to "Profile", profile_path(current_user.profile) %></li>
 						<% end %>
 						<li><%= link_to 'Account', edit_user_registration_path %></li>
