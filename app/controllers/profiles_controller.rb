@@ -40,6 +40,9 @@ class ProfilesController < ApplicationController
 		end
 	end
 
+	def delete
+		end
+
 	def send_image
 		@profile = Profile.find_by(email_hash: params[:email_hash])
 		render :layout => false
