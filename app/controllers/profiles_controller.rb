@@ -30,9 +30,15 @@ class ProfilesController < ApplicationController
 
 	end
 
+	def edit
+		@profile = current_user.profile
+
+	end
+
 	def update
-		@profile = current_user.profile.update(profile_params)
-		if @profile.save
+		@profile = current_user.profile
+		
+		if @profile.update(profile_params)
 			redirect_to @profile
 		else
 			flash[:danger] = "update not sucessful"
