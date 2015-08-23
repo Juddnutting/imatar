@@ -1,6 +1,6 @@
 class NoRecord
 
-	def email
+	def message
 		"No Record Found"
 	end
 

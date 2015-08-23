@@ -4,13 +4,18 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :profile
-  validates :name, presence: true, length: {minimum: 3, maximum: 50}
+  has_one :profile, dependent: :destroy, autosave: true
+  accepts_nested_attributes_for :profile
+
 
   def self.search(search)
   	if search
   		find_by(email: search.strip.downcase) || NoRecord.new
   	end
+  end
+
+  def message
+    "Profile Found"
   end
 
 end

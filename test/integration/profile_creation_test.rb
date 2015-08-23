@@ -6,16 +6,16 @@ class ProfileCreationTest < ActionDispatch::IntegrationTest
 		@user = users(:judd)
 	end
 
-  test "login, create profile by uploading image" do
-  	get new_user_session_path
-  	post user_session_path, 'user[email]' => @user.email, 'user[password]' =>  'password'
+  test "Signup and create profile by uploading image" do
+  	get new_user_registration_path
+  	post user_session_path, 'user[email]' => @user.email, 'user[password]' =>  'password', 'user[password_confirmation' =>
+                            'password', 'user[profile_attributes][name]' => 'joe smith'
   	follow_redirect!
-  	get new_profile_path
-  	assert_template 'profiles/new'
-  	@profile = @user.build_profile
+  	@profile = @user.profile
   	@profile.image = sample_file
+    @profile.save
   	assert @profile.image.exists?
-  	assert_equal @user.name, @profile.user.name 
+  	assert_equal @user.profile.name, @profile.name 
 
   end
 end

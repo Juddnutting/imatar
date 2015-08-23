@@ -5,7 +5,10 @@ class Profile < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   before_save :create_email_hash
-  validates :image, presence: true
+  #validates :image, presence: true
+  validates :name, presence: true, length: {minimum: 3, maximum: 50}
+
+
 
 	def create_email_hash
 		self.email_hash = Digest::MD5.hexdigest(self.user.email)
