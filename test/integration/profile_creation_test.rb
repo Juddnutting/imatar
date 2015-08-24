@@ -11,6 +11,7 @@ class ProfileCreationTest < ActionDispatch::IntegrationTest
   	post user_session_path, 'user[email]' => @user.email, 'user[password]' =>  'password', 'user[password_confirmation' =>
                             'password', 'user[profile_attributes][name]' => 'joe smith'
   	follow_redirect!
+    assert_template 'profiles/show'
   	@profile = @user.profile
   	@profile.image = sample_file
     @profile.save

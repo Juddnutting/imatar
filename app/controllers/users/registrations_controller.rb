@@ -2,7 +2,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
   def new
     build_resource({})
     resource.build_profile
@@ -50,7 +49,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:email, :password, :password_confirmation, :profile_attributes => [:id, :name, :image])
+      u.permit(:email, :password, :password_confirmation, :profile_attributes => [:name, :image])
     end
   end
 
