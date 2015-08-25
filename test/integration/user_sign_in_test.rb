@@ -5,7 +5,7 @@ class UserSignInTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
   def setup
-  	@user = users(:judd)
+  	@user = users(:user1)
   end
 
   test "log in and out with valid information" do
